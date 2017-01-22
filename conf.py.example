@@ -1,0 +1,3 @@
+class Guardian():
+    URL = "http://content.guardianapis.com/search"
+    API_KEY = "test"
