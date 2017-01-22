@@ -1,14 +1,13 @@
-__author__ = 'herve.schnegg'
+from __future__ import division
+import requests
+import math
 
+__author__ = 'herve.schnegg'
 
 '''
 Resource required to retrieve content from the Guardian Open Platform
 http://open-platform.theguardian.com/
 '''
-
-from __future__ import division
-import requests
-import math
 
 
 def format_tags(tags):
@@ -44,7 +43,7 @@ def retrieve_article_details(res):
     return article_dict
 
 
-def query_open_guardian(search, show, url, api_key, limit):
+def get_data(search, show, url, api_key, limit):
     '''
     Run a query against the api and format the result as a dictionary keyd by article id
     '''
@@ -84,7 +83,7 @@ def query_open_guardian(search, show, url, api_key, limit):
 # # Sample call
 
 # url = "http://content.guardianapis.com/search"
-# api_key = "6e82579f-4697-4bf8-9619-73cdd14e968f"
+# api_key = "test"
 # search = {"from-date":"2016-12-01"}
 # search = {"tag":"technology/artificialintelligenceai"}
 # show = {"show-blocks":"body","show-tags":"all"}
