@@ -32,4 +32,6 @@ for k in range(tfidf.shape[0]):
 
 
 # pickle.dump(corpus, open('data/corpus.dictionary.p', 'wb'))
+# pickle.dump(vocabulary, open('data/vocabulary.list.p', 'wb'))
 # corpus = pickle.load(open('data/corpus.dictionary.p', 'rb'))
+# vocabulary = pickle.load(open('data/vocabulary.list.p', 'rb'))

@@ -2,3 +2,5 @@ conf.py
 __init__.py
 *.pyc
 /data/corpus.dictionary.p
+/data/GoogleNews-vectors-negative300.bin
+/data/vocabulary.list.p
