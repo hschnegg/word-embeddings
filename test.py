@@ -34,7 +34,9 @@ for k in range(tfidf.shape[0]):
 
 emb_add = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'])
 emb_avg = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_average)
-embedding.model.most_similar(positive=[emb_add], topn=10)
+emb_tfidf_avg = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_average, vocabulary)
+emb_tfidf_add = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_addition, vocabulary)
+embedding.model.most_similar(positive=[emb_tfidf_add], topn=10)
 
 
 # pickle.dump(corpus, open('data/corpus.dictionary.p', 'wb'))
