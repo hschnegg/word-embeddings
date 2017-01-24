@@ -32,8 +32,9 @@ for k in range(tfidf.shape[0]):
     corpus[corpus.keys()[k]].update({"tfidf": tfidf[k,:]})
 
 
-emb = embedding.retrieve_text_embedding(corpus[corpus.keys()[1]]['cleaned_text'])
-embedding.model.most_similar(positive=[emb], topn=100)
+emb_add = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'])
+emb_avg = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_average)
+embedding.model.most_similar(positive=[emb_add], topn=10)
 
 
 # pickle.dump(corpus, open('data/corpus.dictionary.p', 'wb'))
