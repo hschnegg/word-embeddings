@@ -2,6 +2,7 @@ import conf
 from acquire_text import guardian_open_platform
 from nlp import clean_text
 from nlp import feature_extraction
+from nlp import embedding
 import pickle
 
 
@@ -29,6 +30,10 @@ corpus = {k: {'article_body': v['article_body'], \
 vocabulary, tfidf = feature_extraction.extract_tfidf(map(lambda a: corpus[a]['cleaned_text'], corpus.keys()))
 for k in range(tfidf.shape[0]):
     corpus[corpus.keys()[k]].update({"tfidf": tfidf[k,:]})
+
+
+emb = embedding.retrieve_text_embedding(corpus[corpus.keys()[1]]['cleaned_text'])
+embedding.model.most_similar(positive=[emb], topn=100)
 
 
 # pickle.dump(corpus, open('data/corpus.dictionary.p', 'wb'))
