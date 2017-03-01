@@ -31,12 +31,16 @@ vocabulary, tfidf = feature_extraction.extract_tfidf(map(lambda a: corpus[a]['cl
 for k in range(tfidf.shape[0]):
     corpus[corpus.keys()[k]].update({"tfidf": tfidf[k,:]})
 
+emb_add_tf = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='add', tf=True, idf=False, idf_vocabulary=vocabulary)
+emb_avg_tf = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='avg', tf=True, idf=False, idf_vocabulary=vocabulary)
+emb_add_tf_idf = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='add', tf=True, idf=True, idf_vocabulary=vocabulary)
+emb_avg_tf_idf = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='avg', tf=True, idf=True, idf_vocabulary=vocabulary)
+emb_add = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='add', tf=False, idf=False, idf_vocabulary=vocabulary)
+emb_avg = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='avg', tf=False, idf=False, idf_vocabulary=vocabulary)
+emb_add_idf = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='add', tf=False, idf=True, idf_vocabulary=vocabulary)
+emb_avg_idf = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], combine='avg', tf=False, idf=True, idf_vocabulary=vocabulary)
 
-emb_add = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'])
-emb_avg = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_average)
-emb_tfidf_avg = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_average, vocabulary)
-emb_tfidf_add = embedding.retrieve_text_embedding(corpus[corpus.keys()[0]]['cleaned_text'], embedding.combine_addition, vocabulary)
-embedding.model.most_similar(positive=[emb_tfidf_add], topn=10)
+embedding.model.most_similar(positive=[emb_add_idf], topn=10)
 
 
 # pickle.dump(corpus, open('data/corpus.dictionary.p', 'wb'))

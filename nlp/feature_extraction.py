@@ -16,4 +16,3 @@ def extract_tfidf(text):
     vocabulary = zip(params['pip_vect'].get_feature_names(), params['pip_tfidf'].idf_)
     tfidf = pipeline.transform(text)
     return vocabulary, tfidf
-    
