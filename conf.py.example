@@ -1,3 +1,6 @@
 class Guardian():
     URL = "http://content.guardianapis.com/search"
     API_KEY = "test"
+
+class Word2Vec():
+    GOOGLE_MODEL = 'data/GoogleNews-vectors-negative300.bin'

@@ -11,14 +11,15 @@ http://mccormickml.com/2016/04/12/googles-pretrained-word2vec-model-in-python/
 '''
 
 
-model = word2vec.Word2Vec.load_word2vec_format(conf.Word2Vec.GOOGLE_MODEL, binary=True)
+google_model = conf.Word2Vec.GOOGLE_MODEL
+model = word2vec.Word2Vec.load_word2vec_format(google_model, binary=True)
 
 
 def retrieve_word_embedding(word, model=model):
-    empty_embedding = np.zeros(model.vector_size)
     try:
         embedding = model[word]
     except:
+        empty_embedding = np.zeros(model.vector_size)
         embedding = empty_embedding
     return embedding
 
